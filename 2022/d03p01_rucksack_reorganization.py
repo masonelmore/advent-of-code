@@ -1,18 +1,7 @@
-def main():
-    input_data = load_input('d03_input.txt')
-    solution = solve(input_data)
-    print(solution)
-
-
-def load_input(filename):
-    with open(filename) as f:
-        return f.readlines()
-
-
 def solve(data):
     total_priorities = 0
     for line in data:
-        compartment_a, compartment_b = split_rucksack(line.strip())
+        compartment_a, compartment_b = split_rucksack(line)
         for item in compartment_a:
             if item in compartment_b:
                 total_priorities += item_priority(item)
@@ -30,7 +19,3 @@ def item_priority(item):
         return ord(item) - ord('a') + 1
     else:
         return ord(item) - ord('A') + 27
-
-
-if __name__ == '__main__':
-    main()

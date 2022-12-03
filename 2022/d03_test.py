@@ -5,6 +5,11 @@ from d03p02_rucksack_reorganization import rucksack_groups
 from d03p02_rucksack_reorganization import solve as solve_p02
 
 
+def _gen(items):
+    for item in items:
+        yield item
+
+
 class TestDay03(unittest.TestCase):
 
     def test_priorities(self):
@@ -31,10 +36,10 @@ class TestDay03(unittest.TestCase):
         ]
 
         for test_case in test_cases:
-            actual = list(rucksack_groups(test_case['rucksacks']))
+            actual = list(rucksack_groups(_gen(test_case['rucksacks'])))
             self.assertEqual(actual, test_case['expected'])
 
     def test_solution_p02(self):
         expected = item_priority('c')
-        self.assertEqual(solve_p02(['abc', 'bcd', 'cde']), expected)
-        self.assertEqual(solve_p02(['ccc', 'bcd', 'cde']), expected)
+        self.assertEqual(solve_p02(_gen(['abc', 'bcd', 'cde'])), expected)
+        self.assertEqual(solve_p02(_gen(['ccc', 'bcd', 'cde'])), expected)

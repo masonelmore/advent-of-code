@@ -1,14 +1,3 @@
-def main():
-    input_data = load_input('d02_input.txt')
-    solution = solve(input_data)
-    print(solution)
-
-
-def load_input(filename):
-    with open(filename) as f:
-        return f.readlines()
-
-
 def solve(data):
     winning_shape = {
         'A': 'C',   # Rock beats Scissors
@@ -50,10 +39,6 @@ def plays(data):
     }
 
     for line in data:
-        player_a, outcome = line.strip().split(' ')
+        player_a, outcome = line.split(' ')
         outcome = outcome_translation[outcome]
         yield player_a, outcome
-
-
-if __name__ == '__main__':
-    main()
