@@ -1,5 +1,5 @@
 def main():
-    input_data = load_input('dayXX_input.txt')
+    input_data = load_input('dXX_input.txt')
     solution = solve(input_data)
     print(solution)
 
