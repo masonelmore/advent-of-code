@@ -1,0 +1,22 @@
+import unittest
+
+from util import get_input_filename, load_input
+from m import solve as solve_p01
+from m import solve as solve_p02
+
+
+class TestSolution(unittest.TestCase):
+
+    input_filename = get_input_filename(__file__)
+
+    def test_p01_full(self):
+        data = load_input(self.input_filename)
+        expected = 0
+        answer = solve_p01(data)
+        self.assertEqual(expected, answer)
+
+    def test_p02_full(self):
+        data = load_input(self.input_filename)
+        expected = 0
+        answer = solve_p02(data)
+        self.assertEqual(expected, answer)
