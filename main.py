@@ -12,7 +12,7 @@ def main():
     args = parser.parse_args()
 
     solve = get_solve_func(args.year, args.day, args.part)
-    input_filename = f'{args.year}/d{args.day}_input.txt'
+    input_filename = f'year{args.year}/d{args.day}_input.txt'
     input_data = load_input(input_filename)
     solution = solve(input_data)
     print(f'{args.year}/d{args.day}p{args.part}: {solution}')
@@ -26,12 +26,12 @@ class PaddingAction(argparse.Action):
 
 def get_solve_func(year, day, part):
     filename = find_solution_file(year, day, part)
-    module = importlib.import_module(f'{year}.{filename}')
+    module = importlib.import_module(f'year{year}.{filename}')
     return module.solve
 
 
 def find_solution_file(year, day, part):
-    file_pattern = f'{year}/d{day}p{part}_*'
+    file_pattern = f'year{year}/d{day}p{part}_*'
     files = list(Path('.').glob(file_pattern))
     if len(files) > 1:
         raise Exception(f'too many files found for "{file_pattern}"', files)
