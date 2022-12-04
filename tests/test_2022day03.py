@@ -1,10 +1,10 @@
 import unittest
 
 from util import gen, get_input_filename, load_input
-from year2022.d03_rucksack_reorganization import item_priority
-from year2022.d03_rucksack_reorganization import rucksack_groups
-from year2022.d03_rucksack_reorganization import solve_part1
-from year2022.d03_rucksack_reorganization import solve_part2
+from year2022.day03 import item_priority
+from year2022.day03 import rucksack_groups
+from year2022.day03 import solve_part1
+from year2022.day03 import solve_part2
 
 
 class TestSolution(unittest.TestCase):

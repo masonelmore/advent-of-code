@@ -8,15 +8,15 @@ def gen(items):
 
 def get_input_filename(test_file):
     test_filename = Path(test_file).name
-    # test_YYYYdDD.py
+    # test_YYYYdayDD.py
     #      ^^^^
     year = test_filename[5:9]
 
-    # test_YYYYdDD.py
-    #           ^^
-    day = test_filename[10:12]
+    # test_YYYYdayDD.py
+    #             ^^
+    day = test_filename[12:14]
 
-    input_filename = f'../year{year}/d{day}_input.txt'
+    input_filename = f'../year{year}/day{day}.txt'
     return input_filename
 
 

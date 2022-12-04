@@ -1,5 +1,6 @@
 import argparse
 import importlib
+import string
 
 from pathlib import Path
 
@@ -11,7 +12,7 @@ def main():
     parser.add_argument('-p', '--part', dest='part', type=int)
     args = parser.parse_args()
 
-    input_filename = f'year{args.year}/d{args.day}_input.txt'
+    input_filename = f'year{args.year}/day{args.day}.txt'
     solve_funcs = get_solve_funcs(args.year, args.day, args.part)
     for i, solve_func in enumerate(solve_funcs):
         input_data = load_input(input_filename)
@@ -27,8 +28,7 @@ class PaddingAction(argparse.Action):
 
 
 def get_solve_funcs(year, day, part):
-    filename = find_solution_file(year, day)
-    module = importlib.import_module(f'year{year}.{filename}')
+    module = importlib.import_module(f'year{year}.day{day}')
 
     if not part:
         return [module.solve_part1, module.solve_part2]
@@ -37,17 +37,6 @@ def get_solve_funcs(year, day, part):
         return [module.solve_part1]
     else:
         return [module.solve_part2]
-
-
-def find_solution_file(year, day):
-    file_pattern = f'year{year}/d{day}_*.py'
-    files = list(Path('.').glob(file_pattern))
-    if len(files) > 1:
-        raise Exception(f'too many files found for "{file_pattern}"', files)
-    elif not files:
-        raise Exception(f'no files found for "{file_pattern}"')
-    else:
-        return files[0].stem
 
 
 def load_input(filename):
