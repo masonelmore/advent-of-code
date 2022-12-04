@@ -1,8 +1,7 @@
 import unittest
 
 from util import load_input
-from year2022.day02 import solve_part1
-from year2022.day02 import solve_part2
+from year2022.day02 import solve_part1, solve_part2
 
 
 class TestSolution(unittest.TestCase):

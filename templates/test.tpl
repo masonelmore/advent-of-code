@@ -1,8 +1,7 @@
 import unittest
 
 from util import load_input
-from year${year}.day${day} import solve_part1
-from year${year}.day${day} import solve_part2
+from year${year}.day${day} import solve_part1, solve_part2
 
 
 class TestSolution(unittest.TestCase):
