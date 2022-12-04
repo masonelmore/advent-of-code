@@ -20,7 +20,7 @@ def solve_part2(data):
 
 
 def split_rucksack(sack):
-    compartment_size = int(len(sack)/2)
+    compartment_size = int(len(sack) / 2)
     return sack[:compartment_size], sack[compartment_size:]
 
 

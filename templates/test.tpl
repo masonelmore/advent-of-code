@@ -5,7 +5,6 @@ from year${year}.day${day} import solve_part1, solve_part2
 
 
 class TestSolution(unittest.TestCase):
-
     input_filename = '../year${year}/day${day}.txt'
 
     def test_part1_full(self):

@@ -49,9 +49,9 @@ def solve_part2(data):
 
 def next_move(data):
     shape_translation = {
-        'X': 'A',   # Rock
-        'Y': 'B',   # Paper
-        'Z': 'C',   # Scissors
+        'X': 'A',  # Rock
+        'Y': 'B',  # Paper
+        'Z': 'C',  # Scissors
     }
 
     for line in data:

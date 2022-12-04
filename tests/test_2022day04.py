@@ -12,7 +12,6 @@ from year2022.day04 import (
 
 
 class TestSolution(unittest.TestCase):
-
     input_filename = '../year2022/day04.txt'
 
     def test_part1_full(self):
