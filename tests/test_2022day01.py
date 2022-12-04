@@ -1,13 +1,13 @@
 import unittest
 
-from util import get_input_filename, load_input
+from util import load_input
 from year2022.day01 import solve_part1
 from year2022.day01 import solve_part2
 
 
 class TestSolution(unittest.TestCase):
 
-    input_filename = get_input_filename(__file__)
+    input_filename = '../year2022/day01.txt'
 
     def test_part1_full(self):
         data = load_input(self.input_filename)

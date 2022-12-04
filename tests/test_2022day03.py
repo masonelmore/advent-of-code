@@ -1,6 +1,6 @@
 import unittest
 
-from util import gen, get_input_filename, load_input
+from util import gen, load_input
 from year2022.day03 import item_priority
 from year2022.day03 import rucksack_groups
 from year2022.day03 import solve_part1
@@ -9,7 +9,7 @@ from year2022.day03 import solve_part2
 
 class TestSolution(unittest.TestCase):
 
-    input_filename = get_input_filename(__file__)
+    input_filename = '../year2022/day03.txt'
 
     def test_part1_full(self):
         data = load_input(self.input_filename)
