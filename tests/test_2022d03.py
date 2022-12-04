@@ -1,26 +1,26 @@
 import unittest
 
 from util import gen, get_input_filename, load_input
-from year2022.d03p01_rucksack_reorganization import item_priority
-from year2022.d03p02_rucksack_reorganization import rucksack_groups
-from year2022.d03p01_rucksack_reorganization import solve as solve_p01
-from year2022.d03p02_rucksack_reorganization import solve as solve_p02
+from year2022.d03_rucksack_reorganization import item_priority
+from year2022.d03_rucksack_reorganization import rucksack_groups
+from year2022.d03_rucksack_reorganization import solve_part1
+from year2022.d03_rucksack_reorganization import solve_part2
 
 
 class TestSolution(unittest.TestCase):
 
     input_filename = get_input_filename(__file__)
 
-    def test_p01_full(self):
+    def test_part1_full(self):
         data = load_input(self.input_filename)
         expected = 7691
-        answer = solve_p01(data)
+        answer = solve_part1(data)
         self.assertEqual(expected, answer)
 
-    def test_p02_full(self):
+    def test_part2_full(self):
         data = load_input(self.input_filename)
         expected = 2508
-        answer = solve_p02(data)
+        answer = solve_part2(data)
         self.assertEqual(expected, answer)
 
     def test_priorities(self):
@@ -50,7 +50,7 @@ class TestSolution(unittest.TestCase):
             actual = list(rucksack_groups(gen(test_case['rucksacks'])))
             self.assertEqual(actual, test_case['expected'])
 
-    def test_p02_simple(self):
+    def test_part2_simple(self):
         expected = item_priority('c')
-        self.assertEqual(solve_p02(gen(['abc', 'bcd', 'cde'])), expected)
-        self.assertEqual(solve_p02(gen(['ccc', 'bcd', 'cde'])), expected)
+        self.assertEqual(solve_part2(gen(['abc', 'bcd', 'cde'])), expected)
+        self.assertEqual(solve_part2(gen(['ccc', 'bcd', 'cde'])), expected)
