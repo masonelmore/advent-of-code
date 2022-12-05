@@ -68,8 +68,8 @@ def parse_args():
         return p
 
     parser = argparse.ArgumentParser(description='Runner for AoC solutions.')
-    parser.add_argument('-y', '--year', dest='year', type=year, required=True)
-    parser.add_argument('-d', '--day', dest='day', type=day, required=True)
+    parser.add_argument('-y', '--year', dest='year', type=year)
+    parser.add_argument('-d', '--day', dest='day', type=day)
     parser.add_argument('-p', '--part', dest='part', type=part)
     subparsers = parser.add_subparsers()
 
@@ -80,6 +80,13 @@ def parse_args():
     parser_create.set_defaults(func=create)
 
     args = parser.parse_args()
+
+    if not args.year:
+        args.year = AdventOfCode.year()
+
+    if not args.day:
+        args.day = AdventOfCode.day()
+
     return args
 
 

@@ -1,8 +1,10 @@
 import importlib
 import string
+from datetime import datetime
 from pathlib import Path
 
 import requests
+from pytz import timezone, utc
 
 
 class AdventOfCode:
@@ -16,6 +18,24 @@ class AdventOfCode:
         if not resp.ok:
             return None
         return resp.text.rstrip('\n')
+
+    @classmethod
+    def year(cls):
+        eastern_dt = cls._datetime_eastern()
+        return eastern_dt.year
+
+    @classmethod
+    def day(cls):
+        eastern_dt = cls._datetime_eastern()
+        return eastern_dt.day
+
+    @classmethod
+    def _datetime_eastern(cls):
+        # https://adventofcode.com/2022/about#faq_unlocktime
+        utc_dt = datetime.now(tz=utc)
+        eastern = timezone('US/Eastern')
+        eastern_dt = utc_dt.astimezone(eastern)
+        return eastern_dt
 
 
 class Solution:
