@@ -6,4 +6,4 @@ def gen(items):
 def load_input(filename):
     with open(filename) as f:
         for line in f:
-            yield line.strip()
+            yield line.rstrip('\n')

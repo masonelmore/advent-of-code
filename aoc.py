@@ -15,7 +15,7 @@ class AdventOfCode:
         resp = self.session.get(url)
         if not resp.ok:
             return None
-        return resp.text.strip()
+        return resp.text.rstrip('\n')
 
 
 class Solution:
@@ -103,4 +103,4 @@ class Runner:
     def _load_input(self):
         with open(self.solution.input_filename()) as f:
             for line in f:
-                yield line.strip()
+                yield line.rstrip('\n')
