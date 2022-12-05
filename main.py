@@ -1,6 +1,8 @@
 import argparse
+import os
+from pathlib import Path
 
-from aoc import Solution, Creator, Runner
+from aoc import Solution, Creator, Runner, AdventOfCode
 
 
 def main():
@@ -22,9 +24,28 @@ def run(args):
 
 
 def create(args):
+    token = load_token()
+    if not token:
+        print('Token must be set in AOC_TOKEN or ~/.config/aoc/token')
+        exit(1)
+    aoc = AdventOfCode(token=token)
     solution = Solution(args.year, args.day)
-    creator = Creator(solution)
+    creator = Creator(aoc, solution)
     creator.save_files()
+
+
+def load_token():
+    token = os.getenv('AOC_TOKEN')
+    if token:
+        return token
+
+    token_path = Path(os.path.expanduser('~/.config/aoc/token'))
+    if token_path.exists():
+        with open(token_path) as f:
+            token = f.read().strip()
+        return token
+
+    return None
 
 
 def parse_args():

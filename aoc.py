@@ -1,7 +1,21 @@
 import importlib
 import string
-
 from pathlib import Path
+
+import requests
+
+
+class AdventOfCode:
+    def __init__(self, token):
+        self.session = requests.Session()
+        self.session.cookies['session'] = token
+
+    def puzzle_input(self, year, day):
+        url = f'https://adventofcode.com/{year}/day/{day}/input'
+        resp = self.session.get(url)
+        if not resp.ok:
+            return None
+        return resp.text.strip()
 
 
 class Solution:
@@ -23,7 +37,8 @@ class Solution:
 
 
 class Creator:
-    def __init__(self, solution):
+    def __init__(self, aoc, solution):
+        self.aoc = aoc
         self.solution = solution
 
     def save_files(self):
@@ -41,7 +56,15 @@ class Creator:
             f.write(solution)
 
     def _save_input_data(self):
-        Path(self.solution.input_filename()).touch()
+        if Path(self.solution.input_filename()).exists():
+            return
+
+        input_data = self.aoc.puzzle_input(self.solution.year, self.solution.day)
+        if not input_data:
+            return
+
+        with open(self.solution.input_filename(), 'w') as f:
+            f.write(input_data)
 
     def _save_test(self):
         if Path(self.solution.test_filename()).exists():
