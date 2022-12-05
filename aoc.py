@@ -24,16 +24,16 @@ class Solution:
         self.day = day
 
     def script_filename(self):
-        return f'year{self.year}/day{self.day:02}.py'
+        return f'solutions/year{self.year}/day{self.day:02}.py'
 
     def input_filename(self):
-        return f'year{self.year}/day{self.day:02}.txt'
+        return f'inputs/year{self.year}/day{self.day:02}.txt'
 
     def test_filename(self):
-        return f'tests/test_{self.year}day{self.day:02}.py'
+        return f'tests/year{self.year}/test_day{self.day:02}.py'
 
     def module_name(self):
-        return f'year{self.year}.day{self.day:02}'
+        return f'solutions.year{self.year}.day{self.day:02}'
 
 
 class Creator:

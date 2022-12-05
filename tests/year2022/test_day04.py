@@ -1,7 +1,7 @@
 import unittest
 
-from util import load_input, gen
-from year2022.day04 import (
+from tests.util import load_input, gen
+from solutions.year2022.day04 import (
     solve_part1,
     solve_part2,
     section_ids,
@@ -12,7 +12,7 @@ from year2022.day04 import (
 
 
 class TestSolution(unittest.TestCase):
-    input_filename = '../year2022/day04.txt'
+    input_filename = '../../inputs/year2022/day04.txt'
 
     def test_part1_full(self):
         data = load_input(self.input_filename)
