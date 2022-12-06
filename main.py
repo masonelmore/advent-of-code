@@ -49,23 +49,21 @@ def load_token():
 
 
 def parse_args():
+    def validate_int_range(arg, value, start, end):
+        i = int(value)
+        if i < start or i > end:
+            msg = f'{arg} must be between {start} and {end}'
+            raise argparse.ArgumentTypeError(msg)
+        return i
+
     def year(arg):
-        y = int(arg)
-        if y < 2015 or y > 2022:
-            raise ValueError
-        return y
+        return validate_int_range(arg='year', value=arg, start=2015, end=2022)
 
     def day(arg):
-        d = int(arg)
-        if d < 1 or d > 25:
-            raise ValueError
-        return d
+        return validate_int_range(arg='day', value=arg, start=1, end=25)
 
     def part(arg):
-        p = int(arg)
-        if p < 1 or p > 2:
-            raise ValueError
-        return p
+        return validate_int_range(arg='part', value=arg, start=1, end=2)
 
     parser = argparse.ArgumentParser(description='Runner for AoC solutions.')
     parser.add_argument('-y', '--year', dest='year', type=year)
