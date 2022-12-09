@@ -1,7 +1,7 @@
 import unittest
 
-from tests.util import load_input, gen
 from solutions.year2022.day08 import solve_part1, solve_part2
+from tests.util import load_input, gen
 
 
 def example_input():

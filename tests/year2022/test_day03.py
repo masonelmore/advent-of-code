@@ -1,12 +1,12 @@
 import unittest
 
-from tests.util import gen, load_input
 from solutions.year2022.day03 import (
     solve_part1,
     solve_part2,
     item_priority,
     rucksack_groups,
 )
+from tests.util import gen, load_input
 
 
 class TestSolution(unittest.TestCase):

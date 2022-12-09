@@ -1,7 +1,7 @@
 import unittest
 
-from tests.util import load_input
 from solutions.year2022.day01 import solve_part1, solve_part2
+from tests.util import load_input
 
 
 class TestSolution(unittest.TestCase):

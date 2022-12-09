@@ -1,6 +1,5 @@
 import unittest
 
-from tests.util import load_input, gen
 from solutions.year2022.day04 import (
     solve_part1,
     solve_part2,
@@ -9,6 +8,7 @@ from solutions.year2022.day04 import (
     full_overlap,
     partial_overlap,
 )
+from tests.util import load_input, gen
 
 
 class TestSolution(unittest.TestCase):

@@ -1,6 +1,5 @@
 import unittest
 
-from tests.util import load_input, gen
 from solutions.year2022.day05 import (
     solve_part1,
     solve_part2,
@@ -10,6 +9,7 @@ from solutions.year2022.day05 import (
     crates_at_top,
     get_stack_locations,
 )
+from tests.util import load_input, gen
 
 
 class TestSolution(unittest.TestCase):
