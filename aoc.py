@@ -15,8 +15,7 @@ class AdventOfCode:
     def puzzle_input(self, year, day):
         url = f'https://adventofcode.com/{year}/day/{day}/input'
         resp = self.session.get(url)
-        if not resp.ok:
-            return None
+        resp.raise_for_status()
         return resp.text.rstrip('\n')
 
     @classmethod
@@ -83,9 +82,6 @@ class Creator:
             return
 
         input_data = self.aoc.puzzle_input(self.solution.year, self.solution.day)
-        if not input_data:
-            return
-
         input_path.parent.mkdir(parents=True, exist_ok=True)
         with open(self.solution.input_filename(), 'w') as f:
             f.write(input_data)
