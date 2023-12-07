@@ -67,38 +67,46 @@ class Creator:
         self._save_test()
 
     def _save_solution(self):
-        if Path(self.solution.script_filename()).exists():
+        script_path = Path(self.solution.script_filename())
+        if script_path.exists():
             return
 
+        script_path.parent.mkdir(parents=True, exist_ok=True)
         with open('templates/solution.tpl') as f:
             solution = f.read()
-        with open(self.solution.script_filename(), 'w') as f:
+        with open(script_path, 'w') as f:
             f.write(solution)
 
     def _save_input_data(self):
-        if Path(self.solution.input_filename()).exists():
+        input_path = Path(self.solution.input_filename())
+        if input_path.exists():
             return
 
         input_data = self.aoc.puzzle_input(self.solution.year, self.solution.day)
         if not input_data:
             return
 
+        input_path.parent.mkdir(parents=True, exist_ok=True)
         with open(self.solution.input_filename(), 'w') as f:
             f.write(input_data)
 
     def _save_test(self):
-        if Path(self.solution.test_filename()).exists():
+        test_path = Path(self.solution.test_filename())
+        if test_path.exists():
             return
 
         with open('templates/test.tpl') as f:
             template = string.Template(f.read())
+
         test = template.substitute(
             {
                 'module_name': self.solution.module_name(),
                 'input_filename': self.solution.input_filename(),
             }
         )
-        with open(self.solution.test_filename(), 'w') as f:
+
+        test_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(test_path, 'w') as f:
             f.write(test)
 
 

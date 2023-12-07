@@ -57,7 +57,7 @@ def parse_args():
         return i
 
     def year(arg):
-        return validate_int_range(arg='year', value=arg, start=2015, end=2022)
+        return validate_int_range(arg='year', value=arg, start=2015, end=2023)
 
     def day(arg):
         return validate_int_range(arg='day', value=arg, start=1, end=25)
