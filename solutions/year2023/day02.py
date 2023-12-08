@@ -1,3 +1,6 @@
+import math
+
+
 def solve_part1(data):
     # Find bags with no more than:
     #   12 red cubes, 13 green cubes, and 14 blue cubes.
@@ -10,7 +13,12 @@ def solve_part1(data):
 
 
 def solve_part2(data):
-    return -1
+    # For each game, find the minimum set of cubes that must have been present.
+    # Return the sum of the power of these sets.
+    return sum(
+        math.prod(bag.min_required()) for bag
+        in (Bag.from_line(line) for line in data)
+    )
 
 
 class Bag:
@@ -55,3 +63,7 @@ class Bag:
                 and self.max_seen('green') <= green
                 and self.max_seen('blue') <= blue
         )
+
+    def min_required(self):
+        """Return the minimum required cubes for each color (r,g,b)."""
+        return self.max_seen('red'), self.max_seen('green'), self.max_seen('blue')

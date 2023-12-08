@@ -25,7 +25,7 @@ class TestSolution(unittest.TestCase):
 
     def test_part2_full(self):
         data = load_input(self.input_filename)
-        expected = 0
+        expected = 69629
         answer = solve_part2(data)
         self.assertEqual(expected, answer)
 
@@ -37,6 +37,6 @@ class TestSolution(unittest.TestCase):
 
     def test_part2_example(self):
         data = example_input()
-        expected = 0
+        expected = 2286
         answer = solve_part2(data)
         self.assertEqual(expected, answer)
